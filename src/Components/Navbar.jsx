@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Search, Bell, ChevronDown, Settings, ChevronLeft } from 'lucide-react';
+import { Search, Bell, ChevronDown, Settings, ChevronLeft, Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const notificationCount = 3;
 
@@ -15,8 +15,17 @@ const Navbar = () => {
           </div>
           <span className="text-base font-semibold text-gray-900">REP Platform</span>
         </div>
-        <button className="p-1 hover:bg-gray-100 rounded transition-colors">
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
+        
+        {/* Toggle Button - ChevronLeft icon ki jagah */}
+        <button 
+          onClick={toggleSidebar}
+          className="p-1 hover:bg-gray-100 rounded transition-colors"
+        >
+          {isSidebarOpen ? (
+            <ChevronLeft className="w-5 h-5 text-gray-600" />
+          ) : (
+            <Menu className="w-5 h-5 text-gray-600" />
+          )}
         </button>
       </div>
 

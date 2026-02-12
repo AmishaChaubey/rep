@@ -41,12 +41,10 @@ const Sidebar = () => {
   };
 
   const menuSections = [
-
-
     {
       title: 'OVERVIEW',
       items: [
-         { name: 'Home', icon: Home, path: '/' },
+        { name: 'Home', icon: Home, path: '/' },
         { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' }
       ]
     },
@@ -123,7 +121,7 @@ const Sidebar = () => {
 
   return (
     <div className="w-64 h-full bg-white border-r border-gray-200 flex flex-col overflow-y-auto">
-      {/* Menu Items - No header since it's in Navbar now */}
+      {/* Menu Items */}
       <div className="py-3">
         {menuSections.map((section, index) => (
           <div key={index} className="mb-2">
@@ -155,12 +153,14 @@ const Sidebar = () => {
                       to={item.path}
                       className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
                         isActive
-                          ? 'bg-blue-50 text-blue-700 font-medium'
-                          : 'text-gray-800 hover:bg-gray-50'
+                          ? 'bg-blue-50 text-blue-700 font-medium border-r-2 border-blue-700'
+                          : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >
-                      {item.icon && <item.icon className="w-4.5 h-4.5" />}
-                      <span className='font-semibold text-gray-600'>{item.name}</span>
+                      <item.icon className={`w-4.5 h-4.5 ${isActive ? 'text-blue-700' : 'text-gray-500'}`} />
+                      <span className={`font-semibold ${isActive ? 'text-blue-700' : 'text-gray-600'}`}>
+                        {item.name}
+                      </span>
                     </Link>
                   );
                 })}
